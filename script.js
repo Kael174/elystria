@@ -1,10 +1,10 @@
 const modeToggle = document.getElementById('modeToggle');
 
 function gelistirmeassamasinda() {
-  alert("bu bölüm geliştirme aşamasındadır")
+  alert("This section is under development!")
 }
 function gelistirmeasamasinda() {
-  alert("bu bölüm geliştirme aşamasındadır")
+  alert("This section is under development!")
 }
 
   modeToggle.addEventListener('click', () => {
