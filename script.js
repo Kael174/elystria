@@ -3,9 +3,6 @@ const modeToggle = document.getElementById('modeToggle');
 function gelistirmeasamasinda() {
   alert("bu bölüm geliştirme aşamasındadır")
 }
-function gelistirmeasamasinda() {
-  alert("bu bölüm geliştirme aşamasındadır")
-}
 
   modeToggle.addEventListener('click', () => {
   document.body.classList.toggle('light-mode');
