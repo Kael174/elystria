@@ -1,5 +1,8 @@
 const modeToggle = document.getElementById('modeToggle');
 
+function gelistirmeassamasinda() {
+  alert("bu bölüm geliştirme aşamasındadır")
+}
 function gelistirmeasamasinda() {
   alert("bu bölüm geliştirme aşamasındadır")
 }
