@@ -152,5 +152,5 @@ const responses = {
   "stat": updateStats
 };
 
-log("Sabah oldu. Gözlerini açtın.\nKomut gir veya butonlardan birine tıkla!");
+log("It's morning. You opened your eyes.\nEnter a command or click one of the buttons!");
 updateStats();
