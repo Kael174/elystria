@@ -85,7 +85,7 @@ const responses = {
     player.energy -= 20;
     player.money += 30;
     player.hunger -= 15;
-    log("You worked. You earned 30₺ and you're hungry.");
+    log("You worked. You earned 30$ and you're hungry.");
   },
   "eat": () => {
     if (player.inventory.yemek > 0) {
