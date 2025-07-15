@@ -3,7 +3,7 @@ const modeToggle = document.getElementById('modeToggle');
 function gelistirmeasamasinda() {
   alert("bu bölüm geliştirme aşamasındadır")
 }
-function gelistirmeAsamasinda() {
+function gelistirmeassamasinda() {
   alert("bu bölüm geliştirme aşamasındadır")
 }
 
