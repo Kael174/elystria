@@ -7,14 +7,14 @@ let player = {
   hunger: 100, // 100 = tok, 0 = aç
   day: 1,
   inventory: {
-    yemek: 0
+    food: 0
   }
 };
 
 const loopIntervals = {
-  uyu: null,
-  dinlen: null,
-  meditasyon: null
+  sleep: null,
+  relax: null,
+  meditation: null
 };
 
 function clampStats() {
@@ -22,7 +22,7 @@ function clampStats() {
   player.hunger = Math.min(Math.max(player.hunger, 0), 100);
 
   if (player.hunger <= 0) {
-    log("⚠️ Açlıktan bayılmak üzeresin!");
+    log("⚠️ You're about to faint from hunger!");
   }
 }
 
@@ -52,7 +52,7 @@ function runCommand(input) {
   if (responses[input]) {
     responses[input]();
   } else {
-    log("Bilinmeyen komut. 'stat', 'çalış', 'yemek ye', 'uyu' gibi komutları dene.");
+    log("Unknown command. Try 'stat', 'work', 'eat', 'sleep'.");
   }
 }
 
@@ -70,83 +70,83 @@ function toggleLoop(actionName) {
     clearInterval(loopIntervals[actionName]);
     loopIntervals[actionName] = null;
     btn.classList.remove("active");
-    log(`${actionName} döngüsü durduruldu.`);
+    log(`${actionName} cycle stopped.`);
   } else {
     loopIntervals[actionName] = setInterval(() => {
       if (responses[actionName]) responses[actionName]();
     }, 3000);
     btn.classList.add("active");
-    log(`${actionName} döngüsü başlatıldı.`);
+    log(`${actionName} cycle started.`);
   }
 }
 
 const responses = {
-  "çalış": () => {
+  "work": () => {
     player.energy -= 20;
     player.money += 30;
     player.hunger -= 15;
-    log("Çalıştın. 30₺ kazandın, karnın acıktı.");
+    log("You worked. You earned 30₺ and you're hungry.");
   },
-  "yemek ye": () => {
+  "eat": () => {
     if (player.inventory.yemek > 0) {
       player.inventory.yemek -= 1;
       player.hunger += 30;
       if (player.hunger > 100) player.hunger = 100;
-      log("Yemek yedin. Karnın doydu.");
+      log("You ate. Your stomach is full.");
     } else {
-      log("Yemek envanterinde yemek yok. Önce marketten yemek almalısın.");
+      log("There is no food in your food inventory. You must buy food from the market first.");
     }
   },
-  "iş ara": () => log("Bir kafede garson arıyor. Başvurmaya ne dersin?"),
+  "iş ara": () => log("A cafe is looking for a waiter. How about applying?"),
   "metroya bin": () => {
     if (player.money >= 10) {
       player.money -= 10;
       player.energy -= 10;
       player.hunger -= 5;
-      log("Metroyla şehrin diğer ucuna gittin. Biraz yoruldun.");
+      log("You took the subway to the other end of the city. You're a little tired.");
     } else {
-      log("Kartında yeterli bakiye yok.");
+      log("There is insufficient balance on your card.");
     }
   },
   "uyu": () => {
     player.energy = 100;
     player.hunger -= 10;
     player.day++;
-    log("Uyudun ve yeni bir güne başladın.");
+    log("You slept and started a new day.");
   },
   "dinlen": () => {
     player.energy = Math.min(player.energy + 20, 100);
-    log("Biraz oturup dinlendin.");
+    log("You sat down and rested for a while.");
   },
   "meditasyon": () => {
     player.energy += 10;
     player.hunger -= 3;
-    log("Zihnini dinlendirdin, enerjin hafif yükseldi.");
+    log("You rested your mind, your energy increased slightly.");
   },
   "döner al": () => {
     if (player.money >= 20) {
       player.money -= 20;
       player.inventory.yemek += 1;
-      log("Döner aldın, envanterine 1 yemek eklendi.");
+      log("You bought döner, 1 food was added to your inventory.");
     } else {
-      log("Döner alacak paran yok.");
+      log("You don't have money to buy doner.");
     }
   },
   "enerji içeceği": () => {
     if (player.money >= 15) {
       player.money -= 15;
       player.energy = Math.min(player.energy + 25, 100);
-      log("Enerji içeceği içtin. Doping etkisi!");
+      log("You drank an energy drink. Doping effect!");
     } else {
-      log("İçecek alacak paran yok.");
+      log("You don't have money to buy drinks.");
     }
   },
   "kitap al": () => {
     if (player.money >= 50) {
       player.money -= 50;
-      log("Kitap aldın. Zihnin açıldı. (Gelecekte işe yarayabilir!)");
+      log("You bought a book. Your mind has been opened. (This may come in handy in the future!)");
     } else {
-      log("Kitap almak için yeterli paran yok.");
+      log("You don't have enough money to buy books.");
     }
   },
   "stat": updateStats
