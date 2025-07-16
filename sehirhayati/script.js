@@ -1,5 +1,7 @@
 const story = document.getElementById("story");
 const commandInput = document.getElementById("command");
+const settingsPanel = document.getElementById("settings-panel");
+const volumeLabel = document.getElementById("musicVolumeLabel");
 
 let player = loadGame() || {
   energy: 100,
@@ -38,6 +40,13 @@ function resetGame() {
   log("🔄 Game has been reset.");
   updateStats();
   story.innerText = "";
+}
+
+function exitGame() {
+  log("👋 Thanks for playing. See you next time!");
+  setTimeout(() => {
+    location.reload(); // basit çıkış efekti
+  }, 1000);
 }
 
 function clampStats() {
@@ -176,6 +185,23 @@ const responses = {
   },
   "stats": updateStats
 };
+
+// Settings Logic
+function toggleSettings() {
+  settingsPanel.classList.toggle("hidden");
+}
+
+function setMusicVolume(val) {
+  localStorage.setItem("musicVolume", val);
+  volumeLabel.innerText = `${val}%`;
+}
+
+// Load saved volume
+window.addEventListener("DOMContentLoaded", () => {
+  const savedVol = localStorage.getItem("musicVolume") || "50";
+  document.getElementById("musicVolume").value = savedVol;
+  setMusicVolume(savedVol);
+});
 
 log("🔔 Game loaded. Welcome back, legend.");
 updateStats();
