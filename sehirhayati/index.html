@@ -64,8 +64,18 @@
 
       <div class="button-group">
         <h3>Game</h3>
-        <button onclick="resetGame()">Reset Game</button>
+        <button onclick="toggleSettings()">⚙️ Settings</button>
+        <button onclick="resetGame()">🔄 Reset Game</button>
+        <button onclick="exitGame()">🚪 Exit</button>
       </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="settings hidden">
+      <h3>🎵 Settings</h3>
+      <label for="musicVolume">Music Volume:</label>
+      <input type="range" id="musicVolume" min="0" max="100" value="50" onchange="setMusicVolume(this.value)" />
+      <span id="musicVolumeLabel">50%</span>
     </div>
   </div>
 
