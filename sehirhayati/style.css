@@ -94,19 +94,18 @@ h1 {
 
 .bar {
   height: 100%;
-  background: #4caf50; /* Enerji için yeşil */
+  background: #4caf50;
   width: 0%;
   border-radius: 8px 0 0 8px;
   transition: width 0.3s ease-in-out;
 }
 
 #hunger-bar {
-  background: #f44336; /* Açlık için kırmızı */
-  /* ...önceki kodlar aynı... */
+  background: #f44336;
+}
 
 button.active {
   background-color: #0a8;
   color: #fff;
   font-weight: bold;
-}
 }
