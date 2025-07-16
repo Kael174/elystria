@@ -11,8 +11,8 @@ function gelistirmeasamasinda() {
   document.body.classList.toggle('light-mode');
 
   if(document.body.classList.contains('light-mode')) {
-    modeToggle.textContent = 'Karanlık Modu Aç';
+    modeToggle.textContent = 'Turn on Dark Mode';
   } else {
-    modeToggle.textContent = 'Gece Modu Aç/Kapa';
+    modeToggle.textContent = 'Turn on Light Mode';
   }
 });
