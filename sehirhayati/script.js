@@ -1,7 +1,7 @@
 const story = document.getElementById("story");
 const commandInput = document.getElementById("command");
 
-let player = {
+let player = loadGame() || {
   energy: 100,
   money: 50,
   hunger: 100,
@@ -17,10 +17,32 @@ const loopIntervals = {
   meditate: null
 };
 
+function saveGame() {
+  localStorage.setItem("cityLifeSave", JSON.stringify(player));
+}
+
+function loadGame() {
+  const data = localStorage.getItem("cityLifeSave");
+  return data ? JSON.parse(data) : null;
+}
+
+function resetGame() {
+  localStorage.removeItem("cityLifeSave");
+  player = {
+    energy: 100,
+    money: 50,
+    hunger: 100,
+    day: 1,
+    inventory: { yemek: 0 }
+  };
+  log("🔄 Game has been reset.");
+  updateStats();
+  story.innerText = "";
+}
+
 function clampStats() {
   player.energy = Math.min(Math.max(player.energy, 0), 100);
   player.hunger = Math.min(Math.max(player.hunger, 0), 100);
-
   if (player.hunger <= 0) {
     log("⚠️ You're starving!");
   }
@@ -30,9 +52,9 @@ function updateStats() {
   document.getElementById("day").innerText = player.day;
   document.getElementById("money").innerText = player.money;
   document.getElementById("inventory-yemek").innerText = player.inventory.yemek;
-
   document.getElementById("energy-bar").style.width = player.energy + "%";
   document.getElementById("hunger-bar").style.width = player.hunger + "%";
+  saveGame();
 }
 
 function log(text) {
@@ -61,7 +83,6 @@ commandInput.addEventListener("keydown", function (e) {
 
 function toggleLoop(actionName) {
   const btn = document.querySelector(`button[onclick="toggleLoop('${actionName}')"]`);
-  
   if (loopIntervals[actionName]) {
     clearInterval(loopIntervals[actionName]);
     loopIntervals[actionName] = null;
@@ -71,8 +92,6 @@ function toggleLoop(actionName) {
     loopIntervals[actionName] = setInterval(() => {
       if (responses[actionName]) {
         responses[actionName]();
-
-        // Enerji 100 olduysa döngüyü durdur
         if (player.energy >= 100) {
           clearInterval(loopIntervals[actionName]);
           loopIntervals[actionName] = null;
@@ -81,7 +100,6 @@ function toggleLoop(actionName) {
         }
       }
     }, 3000);
-
     btn.classList.add("active");
     log(`${actionName} loop started.`);
   }
@@ -159,5 +177,5 @@ const responses = {
   "stats": updateStats
 };
 
-log("A new day begins. Open your eyes and take control of your life.");
+log("🔔 Game loaded. Welcome back, legend.");
 updateStats();
