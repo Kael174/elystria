@@ -61,6 +61,7 @@ commandInput.addEventListener("keydown", function (e) {
 
 function toggleLoop(actionName) {
   const btn = document.querySelector(`button[onclick="toggleLoop('${actionName}')"]`);
+  
   if (loopIntervals[actionName]) {
     clearInterval(loopIntervals[actionName]);
     loopIntervals[actionName] = null;
@@ -68,8 +69,19 @@ function toggleLoop(actionName) {
     log(`${actionName} loop stopped.`);
   } else {
     loopIntervals[actionName] = setInterval(() => {
-      if (responses[actionName]) responses[actionName]();
+      if (responses[actionName]) {
+        responses[actionName]();
+
+        // Enerji 100 olduysa döngüyü durdur
+        if (player.energy >= 100) {
+          clearInterval(loopIntervals[actionName]);
+          loopIntervals[actionName] = null;
+          btn.classList.remove("active");
+          log(`${actionName} loop automatically stopped (energy full).`);
+        }
+      }
     }, 3000);
+
     btn.classList.add("active");
     log(`${actionName} loop started.`);
   }
