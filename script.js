@@ -1,8 +1,5 @@
 const modeToggle = document.getElementById('modeToggle');
 
-function gelistirmeassamasinda() {
-  alert("This section is under development!")
-}
 function gelistirmeasamasinda() {
   alert("This section is under development!")
 }
