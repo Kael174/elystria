@@ -1,49 +1,56 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #1e1e2f, #2a2a40);
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-    background-color: #5a3dff;
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
+  background-color: #3f3f5e;
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 3px solid #6a5acd;
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #ffcc70;
+}
+
+header p {
+  font-size: 1rem;
+  color: #cccccc;
 }
 
 main {
-    padding: 2rem;
-    max-width: 800px;
-    margin: auto;
+  padding: 2rem;
 }
 
-.blog-post {
-    background: white;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.post {
+  background-color: #29293d;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  border-left: 5px solid #6a5acd;
 }
 
-.blog-post h2 {
-    color: #5a3dff;
+.post h2 {
+  color: #ffb347;
+  margin-bottom: 0.5rem;
 }
 
-.blog-post .date {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1rem;
+.date {
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 1rem;
 }
 
 footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: #1a1a2e;
+  color: #777;
+  font-size: 0.9rem;
 }
