@@ -1,45 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>KaelVerse Blog</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #111;
-      color: #eee;
-      padding: 20px;
-    }
-    .blog-post {
-      background-color: #222;
-      margin-bottom: 20px;
-      padding: 15px;
-      border-left: 4px solid purple;
-      border-radius: 5px;
-    }
-    .blog-post h2 {
-      margin-top: 0;
-    }
-    .blog-post time {
-      color: #aaa;
-      font-size: 0.9em;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KaelVerse | Blog</title>
+  <link rel="stylesheet" href="style/blog.css" />
 </head>
 <body>
-  <h1>KaelVerse Blog</h1>
+  <header>
+    <h1>KaelVerse Blog</h1>
+    <p>Güncellemeler, fikirler, gelişmeler burada!</p>
+  </header>
 
-  <div class="blog-post">
-    <h2>🚀 Site Açıldı!</h2>
-    <time>16 Temmuz 2025</time>
-    <p>KaelVerse sonunda yayında! Şehir Hayatı oyunu, katkıda bulunanlar ve daha fazlası yolda.</p>
-  </div>
+  <main>
+    <article class="post">
+      <h2>👾 İlk Blog Yazısı</h2>
+      <p>KaelVerse projesinin doğuş hikayesi, planları ve hedefleri...</p>
+    </article>
 
-  <div class="blog-post">
-    <h2>🔧 Yeni Özellikler</h2>
-    <time>17 Temmuz 2025</time>
-    <p>Yeni menü tasarımı, katkı sayfası ve teknoloji sekmesi üzerinde çalışıyoruz. Takipte kal!</p>
-  </div>
+    <article class="post">
+      <h2>⚙️ Teknik Gelişmeler</h2>
+      <p>Socket.IO, Termux, HTML ve JS ile yapılan online oyun altyapısı üzerine...</p>
+    </article>
 
+    <!-- Daha fazla post eklenebilir -->
+  </main>
+
+  <footer>
+    <button onclick="window.location.href='index.html'">Ana Menüye Dön</button>
+  </footer>
 </body>
 </html>
