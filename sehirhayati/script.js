@@ -47,7 +47,7 @@ function exitGame() {
   setTimeout(() => {
     location.reload(); // basit çıkış efekti
   }, 1000);
-  window.location.href = '/kaelverse/index.html' ;
+  window.location.href = "/kaelverse/index.html" ;
 }
 
 function clampStats() {
