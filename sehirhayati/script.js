@@ -45,9 +45,8 @@ function resetGame() {
 function exitGame() {
   log("👋 Thanks for playing. See you next time!");
   setTimeout(() => {
-    window.location.href = "/kaelverse/index.html" ; // basit çıkış efekti
+    window.location.href = "/kaelverse/index.html" ;
   }, 1000);
-  
 }
 
 function clampStats() {
