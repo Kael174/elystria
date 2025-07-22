@@ -47,6 +47,7 @@ function exitGame() {
   setTimeout(() => {
     location.reload(); // basit çıkış efekti
   }, 1000);
+  window.location.href = '/' ;
 }
 
 function clampStats() {
