@@ -62,6 +62,14 @@ function updateStats() {
   document.getElementById("money").innerText = player.money;
   document.getElementById("inventory-yemek").innerText = player.inventory.yemek;
   document.getElementById("energy-bar").style.width = player.energy + "%";
+  if (energy <= 0) {
+  energy = 0;
+  // Enerji bittiğinde yapılacaklar:
+  log("💀 You're out of energy! You need to rest!");
+  disableActions();
+} else {
+  // Normal akış
+  }
   document.getElementById("hunger-bar").style.width = player.hunger + "%";
   saveGame();
 }
