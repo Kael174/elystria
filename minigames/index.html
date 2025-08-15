@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🎮 Mini Games</h1>
+        <p>Select a game and start playing!</p>
+    </header>
 
+    <main class="game-grid">
+        <div class="game-card" onclick="openGame('citylife.html')">
+            <img src="images/citylife.jpg" alt="City Life">
+            <h2>🏙️ City Life</h2>
+            <p>Build your life in the city.</p>
+        </div>
+
+        <div class="game-card" onclick="openGame('snake.html')">
+            <img src="images/snake.jpg" alt="Snake Game">
+            <h2>🐍 Snake Game</h2>
+            <p>Classic retro fun.</p>
+        </div>
+
+        <div class="game-card" onclick="openGame('puzzle.html')">
+            <img src="images/puzzle.jpg" alt="Puzzle Game">
+            <h2>🧩 Puzzle</h2>
+            <p>Solve it if you can!</p>
+        </div>
+    </main>
+
+    <footer>
+        <button onclick="goMainMenu()">⬅ Main Menu</button>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
