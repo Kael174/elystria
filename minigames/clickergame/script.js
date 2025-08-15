@@ -2,7 +2,6 @@ let count = 0;
 let level = 0;
 let prestige = 0;
 let power = 1.0;
-let isMobile = false;
 
 function round(num, decimals = 1) {
   return Number(Math.round(num + "e" + decimals) + "e-" + decimals);
@@ -72,17 +71,6 @@ function loadGame() {
   updateDisplay();
 }
 
-function askPlatform() {
-  let answer = prompt("Are you playing on a mobile device? (yes/no)").toLowerCase();
-  if (answer === "yes" || answer === "y") {
-    isMobile = true;
-    document.body.classList.add("mobile");
-  } else {
-    isMobile = false;
-    document.body.classList.remove("mobile");
-  }
-}
-
 function setupListeners() {
   document.getElementById("clickBtn").onclick = handleClick;
   document.getElementById("rebirthBtn").onclick = handleRebirth;
@@ -90,7 +78,6 @@ function setupListeners() {
 }
 
 window.onload = function () {
-  askPlatform();
   loadGame();
   setupListeners();
 };
