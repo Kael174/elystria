@@ -56,3 +56,22 @@ h1, h2, h3 {
   padding: 10px;
   border-radius: 6px;
 }
+.mini-games-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ffcc00;
+    color: black;
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: background 0.3s, transform 0.2s;
+    z-index: 9999;
+}
+
+.mini-games-btn:hover {
+    background: #ffaa00;
+    transform: scale(1.1);
+}
