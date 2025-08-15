@@ -1,0 +1,58 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background: #121212;
+  color: #eee;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  color: #6a0dad;
+  text-align: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #6a0dad;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.btn.small {
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+.btn.reset {
+  background: #d13434;
+}
+
+.btn.red {
+  background: #b80000;
+}
+
+.shop {
+  margin-top: 30px;
+  background: #1e1e1e;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 6px;
+}
