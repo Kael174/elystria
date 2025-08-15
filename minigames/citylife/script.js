@@ -17,6 +17,23 @@ const loopIntervals = {
   meditate: null
 };
 
+// 💾 Kaydetme fonksiyonu
+function saveGame() {
+  localStorage.setItem("cityLifeSave", JSON.stringify(player));
+}
+
+// 💾 Yükleme fonksiyonu
+function loadGame() {
+  const savedData = localStorage.getItem("cityLifeSave");
+  if (savedData) {
+    player = JSON.parse(savedData);
+    log("💾 Save loaded from local storage.");
+    updateStats();
+  } else {
+    log("No save found. Starting new game.");
+  }
+}
+
 function clampStats() {
   player.energy = Math.min(Math.max(player.energy, 0), 100);
   player.hunger = Math.min(Math.max(player.hunger, 0), 100);
@@ -40,6 +57,7 @@ function log(text) {
   story.scrollTop = story.scrollHeight;
   clampStats();
   updateStats();
+  saveGame(); // 🔹 otomatik kayıt
 }
 
 function runCommand(input) {
@@ -72,7 +90,6 @@ function toggleLoop(actionName) {
       if (responses[actionName]) {
         responses[actionName]();
 
-        // Enerji 100 olduysa döngüyü durdur
         if (player.energy >= 100) {
           clearInterval(loopIntervals[actionName]);
           loopIntervals[actionName] = null;
@@ -159,5 +176,5 @@ const responses = {
   "stats": updateStats
 };
 
-log("A new day begins. Open your eyes and take control of your life.");
-updateStats();
+// 💾 Oyun başlatılırken save yükle
+loadGame();
