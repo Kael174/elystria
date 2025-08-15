@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pixel Shop Tycoon</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Pixel Shop Tycoon</h1>
+    <h2>Money: $<span id="money">0.0</span></h2>
+    <h2>Prestige: <span id="prestige">0</span></h2>
+    <button id="clickBtn" class="btn">Sell Product (+$<span id="clickPower">1.0</span>)</button>
+
+    <div class="shop">
+      <h3>Shop Items</h3>
+
+      <!-- 8 eşya -->
+      <div class="item">
+        <span>Torn Hat (Level <span id="item0Level">0</span>) - Income: $<span id="item0Income">0.0</span>/s</span>
+        <button id="buyItem0" class="btn small">Buy - $<span id="item0Cost">50</span></button>
+      </div>
+      <div class="item">
+        <span>Wool Scarf (Level <span id="item1Level">0</span>) - Income: $<span id="item1Income">0.0</span>/s</span>
+        <button id="buyItem1" class="btn small">Buy - $<span id="item1Cost">150</span></button>
+      </div>
+      <div class="item">
+        <span>Wooden Spoon (Level <span id="item2Level">0</span>) - Income: $<span id="item2Income">0.0</span>/s</span>
+        <button id="buyItem2" class="btn small">Buy - $<span id="item2Cost">300</span></button>
+      </div>
+      <div class="item">
+        <span>Tin Toy (Level <span id="item3Level">0</span>) - Income: $<span id="item3Income">0.0</span>/s</span>
+        <button id="buyItem3" class="btn small">Buy - $<span id="item3Cost">600</span></button>
+      </div>
+      <div class="item">
+        <span>Pixel Shirt (Level <span id="item4Level">0</span>) - Income: $<span id="item4Income">0.0</span>/s</span>
+        <button id="buyItem4" class="btn small">Buy - $<span id="item4Cost">1200</span></button>
+      </div>
+      <div class="item">
+        <span>Retro Console (Level <span id="item5Level">0</span>) - Income: $<span id="item5Income">0.0</span>/s</span>
+        <button id="buyItem5" class="btn small">Buy - $<span id="item5Cost">2400</span></button>
+      </div>
+      <div class="item">
+        <span>LED Sneakers (Level <span id="item6Level">0</span>) - Income: $<span id="item6Income">0.0</span>/s</span>
+        <button id="buyItem6" class="btn small">Buy - $<span id="item6Cost">4800</span></button>
+      </div>
+      <div class="item">
+        <span>Virtual Pet (Level <span id="item7Level">0</span>) - Income: $<span id="item7Income">0.0</span>/s</span>
+        <button id="buyItem7" class="btn small">Buy - $<span id="item7Cost">9600</span></button>
+      </div>
+    </div>
+
+    <button id="prestigeBtn" class="btn reset" disabled>Prestige (100,000$)</button>
+    <button id="restartBtn" class="btn red">Restart Game</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
