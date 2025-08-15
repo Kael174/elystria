@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>City Life(mini game)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🏙️ City Life: English Edition</h1>
 
+    <div id="stats" class="stats">
+      <div>📆 Day: <span id="day"></span></div>
+      <div>💰 Money: <span id="money"></span>₺</div>
+      <div>🍽️ Food Stock: <span id="inventory-yemek">0</span></div>
+
+      <div>
+        🧠 Energy:
+        <div class="bar-container">
+          <div id="energy-bar" class="bar"></div>
+        </div>
+      </div>
+
+      <div>
+        🍔 Hunger:
+        <div class="bar-container">
+          <div id="hunger-bar" class="bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="story" class="story"></div>
+
+    <input
+      type="text"
+      id="command"
+      placeholder="Type a command... (e.g. stats)"
+      autofocus
+    />
+
+    <div class="button-sections">
+      <div class="button-group">
+        <h3>Actions</h3>
+        <button onclick="runCommand('work')">Work</button>
+        <button onclick="runCommand('eat')">Eat</button>
+        <button onclick="runCommand('find job')">Find Job</button>
+        <button onclick="runCommand('ride metro')">Ride Metro</button>
+      </div>
+
+      <div class="button-group">
+        <h3>Loops</h3>
+        <button onclick="toggleLoop('sleep')">Sleep</button>
+        <button onclick="toggleLoop('rest')">Rest</button>
+        <button onclick="toggleLoop('meditate')">Meditate</button>
+      </div>
+
+      <div class="button-group">
+        <h3>Shop</h3>
+        <button onclick="runCommand('buy food')">Buy Food (20₺)</button>
+        <button onclick="runCommand('energy drink')">Energy Drink (15₺)</button>
+        <button onclick="runCommand('buy book')">Buy Book (50₺)</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
