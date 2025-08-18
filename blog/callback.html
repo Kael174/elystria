@@ -1,32 +1,32 @@
-<!-- callback.html örnek minimal -->
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Giriş İşleniyor...</title>
+  <meta charset="UTF-8">
+  <title>Processing Login...</title>
 </head>
 <body>
-<p>Giriş işleniyor, lütfen bekleyin...</p>
-<script>
-  // URL'den "code" parametresini al
-  const urlParams = new URLSearchParams(window.location.search);
-  const code = urlParams.get('code');
+  <p>Processing login, please wait...</p>
+  
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
 
-  if (code) {
-    // Bu örnek statik site, token almak için serverless function veya proxy gerekli
-    // Örnek: kendi sunucunda /get_token endpoint'i ile code'u gönderip access token alabilirsin
-    fetch(`https://senin-backend.com/get_token?code=${code}`)
-      .then(res => res.json())
-      .then(data => {
-        // Token ve kullanıcı bilgilerini al
-        console.log('Access token:', data.access_token);
-        // Kullanıcıyı blog sayfasına yönlendir
-        window.location.href = '/elystria/blog/blog.html';
-      })
-      .catch(err => console.error('Token alınamadı:', err));
-  } else {
-    console.error('Code parametresi bulunamadı.');
-  }
-</script>
+    if (code) {
+      // Use your serverless function or backend to exchange code for token
+      fetch(`https://your-backend.com/get_token?code=${code}`)
+        .then(res => res.json())
+        .then(data => {
+          localStorage.setItem('elystria_user', JSON.stringify({
+            token: data.access_token,
+            username: data.login
+          }));
+          window.location.href = '/elystria/blog/blog.html'; // redirect
+        })
+        .catch(err => console.error('Token fetch failed:', err));
+    } else {
+      console.error('Code parameter not found.');
+    }
+  </script>
+  
 </body>
 </html>
