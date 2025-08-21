@@ -16,6 +16,13 @@
   <title>Elystria</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7552094466428296"
      crossorigin="anonymous"></script>
+  <script>
+  const user = JSON.parse(localStorage.getItem("elystria_user"));
+  if (!user) {
+    // Not logged in → redirect
+    window.location.href = "/elystria/login.html";
+  }
+  </script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
