@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elystria - Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      height: 100vh; margin: 0;
+      background: #f0f0f0;
+    }
+    .login-box {
+      background: white; padding: 20px;
+      border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+    input, button {
+      margin: 8px 0; padding: 10px; width: 100%;
+      border: 1px solid #ccc; border-radius: 6px;
+    }
+    button {
+      background: #6c5ce7; color: white; font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover { background: #5a4bd6; }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>🔮 Elystria Login</h2>
+    <input type="email" id="email" placeholder="Enter your email" />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById('email').value;
+      if (!email) return alert("Please enter an email!");
+
+      // Save user in localStorage
+      localStorage.setItem("elystria_user", JSON.stringify({ email: email }));
+
+      // Redirect to blog
+      window.location.href = "/elystria/blog/blog.html";
+    }
+  </script>
+</body>
+</html>
