@@ -16,13 +16,60 @@
   <title>Elystria</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7552094466428296"
      crossorigin="anonymous"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Elystria - Home</title>
+  <style>
+    body {
+      margin: 0; font-family: Arial, sans-serif;
+    }
+    .navbar {
+      display: flex; justify-content: flex-end; 
+      padding: 10px 20px; background: #6c5ce7; color: white;
+    }
+    .navbar button {
+      background: white; color: #6c5ce7;
+      border: none; padding: 8px 14px;
+      border-radius: 6px; cursor: pointer;
+      font-weight: bold;
+    }
+    .navbar button:hover {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navbar"></div>
+
+  <h1 style="text-align:center; margin-top:50px;">🌌 Welcome to Elystria</h1>
+  <p style="text-align:center;">A universe of your own.</p>
+
   <script>
-  const user = JSON.parse(localStorage.getItem("elystria_user"));
-  if (!user) {
-    // Not logged in → redirect
-    window.location.href = "/elystria/login.html";
-  }
+    const navbar = document.getElementById("navbar");
+    const user = JSON.parse(localStorage.getItem("elystria_user"));
+
+    if (user) {
+      // Show welcome + logout
+      navbar.innerHTML = `
+        👋 Hello, <b>${user.username}</b>
+        <button onclick="logout()">Logout</button>
+      `;
+    } else {
+      // Show login button
+      navbar.innerHTML = `
+        <button onclick="window.location.href='/elystria/login.html'">Login</button>
+      `;
+    }
+
+    function logout() {
+      localStorage.removeItem("elystria_user");
+      window.location.reload(); // refresh page
+    }
   </script>
+</body>
+
+  
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
