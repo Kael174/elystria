@@ -3,5 +3,5 @@ function openGame(url) {
 }
 
 function goMainMenu() {
-    window.location.href = "/kaelverse/index.html";
+    window.location.href = "/elystria/index.html";
 }
