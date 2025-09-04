@@ -174,8 +174,19 @@ const responses = {
     }
   },
   "reset game": () => {
-    let player
-  }
+  player = {
+    energy: 100,
+    money: 50,
+    hunger: 100,
+    day: 1,
+    inventory: {
+      yemek: 0
+    }
+  };
+  updateStats();
+  log("Game has been reset!");
+  saveGame(); // reset sonrası kaydet
+}
   "stats": updateStats
 };
 
