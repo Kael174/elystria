@@ -184,7 +184,6 @@ const responses = {
     }
   };
   updateStats();
-  log("Game has been reset!");
   saveGame(); // reset sonrası kaydet
 }
   "stats": updateStats
