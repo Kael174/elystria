@@ -173,6 +173,9 @@ const responses = {
       log("You need 50₺ to buy a book.");
     }
   },
+  "reset game": () => {
+    let player
+  }
   "stats": updateStats
 };
 
