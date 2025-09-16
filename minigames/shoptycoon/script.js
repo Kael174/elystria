@@ -38,16 +38,24 @@ function loadGame() {
   });
 }
 
+// --- Format Numbers ---
+function formatNumber(num) {
+  if (num >= 1e9) return (num / 1e9).toFixed(1) + "B"; // Milyar
+  if (num >= 1e6) return (num / 1e6).toFixed(1) + "M"; // Milyon
+  if (num >= 1e3) return (num / 1e3).toFixed(1) + "K"; // Bin
+  return num.toFixed(1); // Normal gösterim
+}
+
 // --- Display ---
 function updateDisplay() {
-  document.getElementById("money").textContent = money.toFixed(1);
+  document.getElementById("money").textContent = formatNumber(money);
   document.getElementById("prestige").textContent = prestige;
   document.getElementById("clickPower").textContent = clickPower.toFixed(1);
 
   items.forEach((item, index) => {
     document.getElementById(`item${index}Level`).textContent = item.level;
-    document.getElementById(`item${index}Income`).textContent = (item.level * item.baseCost * 0.05).toFixed(1);
-    document.getElementById(`item${index}Cost`).textContent = getCost(item).toFixed(1);
+    document.getElementById(`item${index}Income`).textContent = formatNumber(item.level * item.baseCost * 0.05);
+    document.getElementById(`item${index}Cost`).textContent = formatNumber(getCost(item));
   });
 
   document.getElementById("prestigeBtn").disabled = money < 100000;
@@ -94,10 +102,10 @@ function buyItem(index) {
 }
 
 function handlePrestige() {
-  if (money >= 100000) {
+  if (money >= 1000000) {
     money = 0;
     prestige++;
-    clickPower += 0.5;
+    clickPower *= 2;
     items.forEach(item => item.level = 0);
     updateDisplay();
     saveGame();
