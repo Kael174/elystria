@@ -40,17 +40,17 @@ function loadGame() {
 
 // --- Format Numbers ---
 function formatNumber(num) {
-  if (num >= 1e9) return (num / 1e9).toFixed(1) + "B"; // Milyar
-  if (num >= 1e6) return (num / 1e6).toFixed(1) + "M"; // Milyon
-  if (num >= 1e3) return (num / 1e3).toFixed(1) + "K"; // Bin
-  return num.toFixed(1); // Normal gösterim
+  if (num >= 1e9) return (num / 1e9).toFixed(1) + "B";
+  if (num >= 1e6) return (num / 1e6).toFixed(1) + "M";
+  if (num >= 1e3) return (num / 1e3).toFixed(1) + "K";
+  return num.toFixed(1);
 }
 
 // --- Display ---
 function updateDisplay() {
   document.getElementById("money").textContent = formatNumber(money);
   document.getElementById("prestige").textContent = prestige;
-  document.getElementById("clickPower").textContent = clickPower.toFixed(1);
+  document.getElementById("clickPower").textContent = formatNumber(clickPower);
 
   items.forEach((item, index) => {
     document.getElementById(`item${index}Level`).textContent = item.level;
@@ -58,7 +58,8 @@ function updateDisplay() {
     document.getElementById(`item${index}Cost`).textContent = formatNumber(getCost(item));
   });
 
-  document.getElementById("prestigeBtn").disabled = money < 100000;
+  // Prestige 1M$'a sabitlenmiş
+  document.getElementById("prestigeBtn").disabled = money < 1000000;
 }
 
 // --- Core ---
@@ -82,12 +83,18 @@ function handleClick() {
   saveGame();
 }
 
+function showMessage(text) {
+  const msg = document.getElementById("message");
+  msg.textContent = text;
+  setTimeout(() => (msg.textContent = ""), 2000);
+}
+
 function buyItem(index) {
   const item = items[index];
   const cost = getCost(item);
 
   if (index > 0 && items[index - 1].level < 10) {
-    alert("You need 10 of the previous item to unlock this one!");
+    showMessage("Need 10 of the previous item to unlock!");
     return;
   }
 
@@ -97,18 +104,20 @@ function buyItem(index) {
     updateDisplay();
     saveGame();
   } else {
-    alert("Not enough money!");
+    showMessage("Not enough money!");
   }
 }
 
 function handlePrestige() {
   if (money >= 1000000) {
-    money = 0;
-    prestige++;
-    clickPower *= 2;
-    items.forEach(item => item.level = 0);
-    updateDisplay();
-    saveGame();
+    if (confirm("Prestige reset? You'll gain +1 prestige and double click power.")) {
+      money = 0;
+      prestige++;
+      clickPower *= 2;
+      items.forEach(item => (item.level = 0));
+      updateDisplay();
+      saveGame();
+    }
   }
 }
 
@@ -118,7 +127,7 @@ function restartGame() {
     money = 0;
     prestige = 0;
     clickPower = 1.0;
-    items.forEach(item => item.level = 0);
+    items.forEach(item => (item.level = 0));
     updateDisplay();
     saveGame();
   }
