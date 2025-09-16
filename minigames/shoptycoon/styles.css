@@ -33,11 +33,11 @@ h1, h2, h3 {
 }
 
 .btn.reset {
-  background: #d13434;
+  background: #b80000;
 }
 
 .btn.red {
-  background: #b80000;
+  background: #d13434;
 }
 
 .shop {
@@ -55,4 +55,12 @@ h1, h2, h3 {
   background: #2a2a2a;
   padding: 10px;
   border-radius: 6px;
+}
+
+.message {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ff6666;
+  min-height: 20px;
 }
